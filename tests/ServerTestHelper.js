@@ -13,22 +13,19 @@ const ServerTestHelper = {
       payload: userPayload,
     });
 
-    const { addedUser: { id: owner } } = (JSON.parse(responseAddUser.payload)).data;
-
-    const authPayload = {
-      username: userPayload.username,
-      password: userPayload.password,
-    };
-
     const responseAuth = await server.inject({
       method: 'POST',
       url: '/authentications',
-      payload: authPayload,
+      payload: {
+        username: userPayload.username,
+        password: userPayload.password,
+      },
     });
 
-    const { accessToken } = (JSON.parse(responseAuth.payload)).data;
-
-    return { accessToken, owner };
+    return {
+      accessToken: JSON.parse(responseAuth.payload).data.accessToken,
+      userId: JSON.parse(responseAddUser.payload).data.addedUser.id,
+    };
   },
 };
 

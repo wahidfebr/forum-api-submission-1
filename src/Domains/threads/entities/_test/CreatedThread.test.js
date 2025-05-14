@@ -16,7 +16,7 @@ describe('a CreatedThread entities', () => {
     const payload = {
       id: 123,
       title: true,
-      owner: 456
+      owner: 456,
     };
 
     // Action and Assert
@@ -28,7 +28,7 @@ describe('a CreatedThread entities', () => {
     const payload = {
       id: 'thread-dicoding',
       title: 'dicoding',
-      owner: "user-dicoding"
+      owner: 'user-dicoding',
     };
 
     // Action

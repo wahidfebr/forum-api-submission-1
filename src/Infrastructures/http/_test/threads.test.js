@@ -24,7 +24,7 @@ describe('/threads endpoint', () => {
       };
 
       const server = await createServer(container);
-      const { accessToken, owner } = await ServerTestHelper.generateAccessToken(server);
+      const { accessToken, userId } = await ServerTestHelper.generateAccessToken(server);
 
       // Action
       const response = await server.inject({
@@ -42,7 +42,7 @@ describe('/threads endpoint', () => {
       expect(responseJson.status).toEqual('success');
       expect(responseJson.data.addedThread).toBeDefined();
       expect(responseJson.data.addedThread.title).toEqual(threadPayload.title);
-      expect(responseJson.data.addedThread.owner).toEqual(owner);
+      expect(responseJson.data.addedThread.owner).toEqual(userId);
     });
 
     it('should response 400 when request payload not contain needed property', async () => {
