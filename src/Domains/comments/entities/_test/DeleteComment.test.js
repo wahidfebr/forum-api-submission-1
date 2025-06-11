@@ -36,7 +36,7 @@ describe('a DeleteComment entities', () => {
 
     // Assert
     expect(threadId).toEqual(payload.threadId);
-    expect(commentId).toEqual(payload.commentId);
     expect(owner).toEqual(payload.owner);
+    expect(content).toEqual(payload.content);
   });
 });
